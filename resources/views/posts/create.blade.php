@@ -8,4 +8,22 @@
     </div>
 
     <h1>Add New Post</h1>
+
+    <form method="post" action="">
+        @csrf
+        <div class="form-group">
+        <label>
+            Title
+            <input type="text" name="title">
+        </label>
+        </div>
+        <div class="form-group">
+        <label>
+            Body
+                <textarea name="body"></textarea>
+            </label>
+        </div>
+        <div class="form-button">
+            <button>Add</button>
+    </form>
 </x-layout>
