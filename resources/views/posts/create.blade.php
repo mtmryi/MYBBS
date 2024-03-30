@@ -26,4 +26,4 @@
         <div class="form-button">
             <button>Add</button>
     </form>
-</x-layout>
+    </x-layout>
