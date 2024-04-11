@@ -14,59 +14,58 @@ class PostController extends Controller
 
         $posts = Post::latest()->get();
 
-    return view('index')
+        return view('index')
         ->with(['posts' => $posts]);
-}
-
-// Implicit Binding
-public function show(Post $post)
-{
-
-    return view('posts.show')
-        ->with(['post' => $post]);
-}
-
-public function create()
-{
-    return view('posts.create');
-}
-
-public function store(PostRequest $request)
-{
-    $post = new Post();
-    $post->title = $request->title;
-    $post->body = $request->body;
-    $post->save();
-
-    return redirect()
-          ->route('posts.index');
-}
-
-public function edit(Post $post)
-{
-
-    return view('posts.edit')
-        ->with(['post' => $post]);
-}
-
-
-public function update(PostRequest $request, Post $post)
-{
-
-    $post->title = $request->title;
-    $post->body = $request->body;
-    $post->save();
-
-    return redirect()
-          ->route('posts.show', $post);
     }
-}
 
-public function destroy(Post $post)
-{
-    $post->delete();
+    // Implicit Binding
+    public function show(Post $post)
+    {
 
-    return redirect()
-    ->route('posts.index');
-}
+        return view('posts.show')
+        ->with(['post' => $post]);
+    }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store(PostRequest $request)
+    {
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+
+        return redirect()
+        ->route('posts.index');
+    }
+
+    public function edit(Post $post)
+    {
+
+        return view('posts.edit')
+        ->with(['post' => $post]);
+    }
+
+
+    public function update(PostRequest $request, Post $post)
+    {
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+
+        return redirect()
+        ->route('posts.show', $post);
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()
+        ->route('posts.index');
+    }
 }
